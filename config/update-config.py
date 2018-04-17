@@ -210,7 +210,16 @@ if __name__ == '__main__':
             else:
                 msfpath = raw_input(" [>] Please enter the path to msfvenom: ")
                 options["MSFVENOM_PATH"] = msfpath
-        # ...everything else (Linux)
+        # Parrot
+        elif issue.startswith("Parrot"):
+            options["OPERATING_SYSTEM"] = "Parrot"
+            options["METASPLOIT_PATH"] = "/usr/share/metasploit-framework/"
+            if os.path.isfile('/usr/bin/msfvenom'):
+                options["MSFVENOM_PATH"] = "/usr/bin/"
+            else:
+                msfpath = raw_input(" [>] Please enter the path to msfvenom: ")
+                options["MSFVENOM_PATH"] = msfpath
+ # ...everything else (Linux)
         else:
             options["OPERATING_SYSTEM"] = "Linux"
             msfpath = raw_input(" [>] Please enter the path of your metasploit installation: ")
